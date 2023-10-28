@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/content">
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.testingnavcontroller.fragments.Setting"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/content"
+        android:name="com.testingnavcontroller.fragments.Content"
+        android:label="fragment_content"
+        tools:layout="@layout/fragment_content" >
+        <action
+            android:id="@+id/action_navigate_to_filters"
+            app:destination="@id/filters" />
+    </fragment>
+    <fragment
+        android:id="@+id/favourite"
+        android:name="com.testingnavcontroller.fragments.Favourite"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/filters"
+        android:name="com.testingnavcontroller.fragments.Filters"
+        android:label="Filters"
+        tools:layout="@layout/fragment_filters"/>
+</navigation>
