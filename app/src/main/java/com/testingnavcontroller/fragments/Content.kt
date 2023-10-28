@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.testingnavcontroller.R
@@ -15,7 +13,6 @@ import com.testingnavcontroller.databinding.FragmentContentBinding
 
 class Content : Fragment() {
     private lateinit var _binding:FragmentContentBinding
-    // TODO: Rename and change types of parameters
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -25,7 +22,6 @@ class Content : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentContentBinding.inflate(inflater,container,false)
-
 
         // Inflate the layout for this fragment
         return _binding.root
@@ -39,9 +35,17 @@ class Content : Fragment() {
         }
     }
 
+    fun receiveData(msg:String){
+        Snackbar.make(_binding.txtTitle,msg,Snackbar.LENGTH_LONG).show()
+    }
+
     override fun onResume() {
         super.onResume()
-        Snackbar.make(_binding.txtTitle,"Resume to content",Snackbar.LENGTH_LONG).show()
+        //Snackbar.make(_binding.txtTitle,"Resume to content",Snackbar.LENGTH_LONG).show()
+    }
 
+    override fun onPause() {
+        super.onPause()
+        //Snackbar.make(_binding.txtTitle,"content pause",Snackbar.LENGTH_LONG).show()
     }
 }

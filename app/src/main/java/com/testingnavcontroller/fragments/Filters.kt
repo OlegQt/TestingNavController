@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.testingnavcontroller.BackNavigateListener
 import com.testingnavcontroller.R
 import com.testingnavcontroller.databinding.FragmentFiltersBinding
 
 
 class Filters : Fragment() {
     private lateinit var _binding:FragmentFiltersBinding
+    private lateinit var backNavigateListener: BackNavigateListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,15 +23,17 @@ class Filters : Fragment() {
 
         _binding = FragmentFiltersBinding.inflate(inflater,container,false)
 
+        backNavigateListener = requireContext() as BackNavigateListener
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_filters, container, false)
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding.navigationBar.setNavigationOnClickListener {
-            Snackbar.make(_binding.txtTitle,"Back pressed",Snackbar.LENGTH_LONG).show()
+            backNavigateListener.setOnBackNavigateListener("from Filters")
+            findNavController().popBackStack()
         }
     }
-
 }
