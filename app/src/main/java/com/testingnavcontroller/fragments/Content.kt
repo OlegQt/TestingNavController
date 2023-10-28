@@ -29,6 +29,11 @@ class Content : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        parentFragmentManager.setFragmentResultListener("key",viewLifecycleOwner) { key, bundle ->
+            // Здесь можно передать любой тип, поддерживаемый Bundle-ом
+            val result = bundle.getString("bundleKey")
+            Snackbar.make(_binding.txtTitle,result.toString(),Snackbar.LENGTH_LONG).show()
+        }
 
         _binding.btnNavigateToFilter.setOnClickListener {
             findNavController().navigate(R.id.action_navigate_to_filters)
@@ -39,13 +44,4 @@ class Content : Fragment() {
         Snackbar.make(_binding.txtTitle,msg,Snackbar.LENGTH_LONG).show()
     }
 
-    override fun onResume() {
-        super.onResume()
-        //Snackbar.make(_binding.txtTitle,"Resume to content",Snackbar.LENGTH_LONG).show()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        //Snackbar.make(_binding.txtTitle,"content pause",Snackbar.LENGTH_LONG).show()
-    }
 }

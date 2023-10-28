@@ -14,6 +14,7 @@ class Favourite : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        enterTransition
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_favourite, container, false)
     }
